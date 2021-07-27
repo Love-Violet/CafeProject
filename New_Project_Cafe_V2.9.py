@@ -1,6 +1,8 @@
 import sys
 import webbrowser
 import time
+import string
+import random
 
 
 class formatting:
@@ -315,6 +317,7 @@ def checkout():
 def checkout_format():
     global price_before
     print('\n'*15+formatting.bold+'{:^85s}' .format('---Receipt---')+formatting.end)
+    rg()
     print('| Item                                        | Quantity      | Price      |')
     for view in shopping_list:
         for second in table2:
@@ -371,7 +374,7 @@ def bonus():
 
 def gst():
     price_no_gst = price_before - total_discount_price
-    print('| {:>60s}| ${:<10.2f}|'. format('Total Price(w/o GST', price_no_gst))
+    print('| {:>60s}| ${:<10.2f}|'. format('Total Price(w/o GST)', price_no_gst))
     global gst_7
     global gst_107
     gst_7 = (price_before - total_discount_price) * 0.07
@@ -402,6 +405,13 @@ def card_selection():
         webbrowser.open_new('https://www.americanexpress.com/us/help/make-a-payment.html')
     elif card_select == '5':
         webbrowser.open_new('https://www.unionpayintl.com/en/servicesProducts/products/innovativeProducts/onlinePayment/')
+
+
+def rg():
+    ran = range(0, 10)
+    up_letter = random.choice(string.ascii_uppercase)
+    rng = random.sample(ran, k=7)
+    print('{:>64}{}{}{}{}{}{}{}{}'. format('Number: ', rng[0], rng[1], rng[2], rng[3], rng[4], rng[5], rng[6], up_letter))
 
 
 main()
