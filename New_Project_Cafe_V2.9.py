@@ -408,7 +408,7 @@ def gst():
 
 
 def advertisement():
-    print('\n'*10+'{:^85s}\n Promo code(non - member)*: $1 off\n\n Please copy the code after : and paste it when on check out\n Get  a $5 off promo code with $50 in a single receipt*\n\n\n* promo code only applicable to redeem as a non member' .format('---Advertisement---'))
+    print('\n'*10+'{:^85s}\n Promo code(non - member)*: $1 off\n\n Please copy the code after : and paste it when on check out\n Get a $5 off promo code with $50 in a single receipt*\n\n\n* promo code only applicable to redeem as a non member' .format('---Advertisement---'))
     time.sleep(5)
 
 
