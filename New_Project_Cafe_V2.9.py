@@ -273,8 +273,8 @@ def checkout():
         global promo_availability
         price_before = 0
         print('\n'*15+formatting.bold+'{:^85s}' .format('---Check-out---')+formatting.end)
-        member = input(formatting.italic+"> Are you a member?: "+formatting.end)
-        if member == 'return':
+        member = input(formatting.italic+"> Are you a member?(Press enter to main menu): "+formatting.end)
+        if member == '':
             main()
         elif member == 'n' or member == 'N' or member == 'No' or member == 'no':
             while True:
@@ -408,7 +408,7 @@ def gst():
 
 
 def advertisement():
-    print('\n'*10+'{:^85s}\n Promo code(non - member)*: $1 off\n\n Please copy the code after : and paste it when on check out\n free $5 off promo code if your final balance in the receipt is $50 or more*\n\n\n* promo code only applicable to redeem as a non member' .format('---Advertisement---'))
+    print('\n'*10+'{:^85s}\n Promo code(non - member)*: $1 off\n\n Please copy the code after : and paste it when on check out\n Get  a $5 off promo code with $50 in a single receipt*\n\n\n* promo code only applicable to redeem as a non member' .format('---Advertisement---'))
     time.sleep(5)
 
 
