@@ -201,18 +201,23 @@ def add_item():
         input_item = input(formatting.italic+'\n> Enter Item Name (Case Sensitive)(Press enter to return): '+formatting.end)
         if input_item == '':
             break
-        item_quantity = int(input(formatting.italic+'> Enter Quantity: '+formatting.end))
-        if input_item in shopping_list:
-            x = shopping_list.get(input_item)
-            x += item_quantity
-            shopping_list[input_item] = x
-        elif input_item in table2:
-            item.append(input_item)
-            quantity.append(item_quantity)
-            for o in range(0, len(item)):
-                shopping_list[item[o]] = quantity[o]
-        else:
-            print('Invalid Item')
+        try:
+            item_quantity = int(input(formatting.italic+'> Enter Quantity: '+formatting.end))
+            if input_item in shopping_list:
+                x = shopping_list.get(input_item)
+                x += item_quantity
+                shopping_list[input_item] = x
+            elif input_item in table2:
+                item.append(input_item)
+                quantity.append(item_quantity)
+                for o in range(0, len(item)):
+                    shopping_list[item[o]] = quantity[o]
+            else:
+                print('Invalid Item')
+                time.sleep(2)
+                add_item()
+        except ValueError:
+            print('Invalid Quantity')
             time.sleep(2)
             add_item()
         continue_adding = input(formatting.italic+'\n> Add more items? '+formatting.end)
@@ -228,19 +233,24 @@ def remove_item():
         item_remove = input(formatting.italic+'\n> Enter item name (Case Sensitive)(Press enter to return): '+formatting.end)
         if item_remove == '':
             break
-        remove_quantity = int(input(formatting.italic+'> Enter Quantity: '+formatting.end))
-        if item_remove in shopping_list:
-            if remove_quantity >= shopping_list[item_remove]:
-                shopping_list.pop(item_remove)
+        try:
+            remove_quantity = int(input(formatting.italic+'> Enter Quantity: '+formatting.end))
+            if item_remove in shopping_list:
+                if remove_quantity >= shopping_list[item_remove]:
+                    shopping_list.pop(item_remove)
+                else:
+                    remove = shopping_list.get(item_remove)
+                    remove -= remove_quantity
+                    shopping_list[item_remove] = remove
+            continue_adding = input(formatting.italic+'\n> Remove more items? '+formatting.end)
+            if continue_adding == 'Yes' or continue_adding == 'yes' or continue_adding == 'Y' or continue_adding == 'y':
+                continue
             else:
-                remove = shopping_list.get(item_remove)
-                remove -= remove_quantity
-                shopping_list[item_remove] = remove
-        continue_adding = input(formatting.italic+'\n> Remove more items? '+formatting.end)
-        if continue_adding == 'Yes' or continue_adding == 'yes' or continue_adding == 'Y' or continue_adding == 'y':
-            continue
-        else:
-            break
+                break
+        except ValueError:
+            print('Invalid Quantity')
+            time.sleep(2)
+            remove_item()
 
 
 def view_item():
@@ -382,17 +392,23 @@ def bonus():
 
 def gst():
     price_no_gst = price_before - total_discount_price
+    if price_no_gst < 0:
+        price_no_gst = 0
     print('| {:>60s}| ${:<10.2f}|'. format('Total Price(w/o GST)', price_no_gst))
     global gst_7
     global gst_107
     gst_7 = (price_before - total_discount_price) * 0.07
+    if gst_7 < 0:
+        gst_7 = 0
     print('| {:>60s}| ${:<10.2f}|'. format('GST', gst_7))
     gst_107 = (price_before - total_discount_price) * 1.07
+    if gst_107 < 0:
+        gst_107 = 0
     print('| {:>60s}| ${:<10.2f}|'. format('Total Price', gst_107))
 
 
 def advertisement():
-    print('\n'*10+'{:^85s}\n Promo code(non - member)*: $1 off\n\n Please copy the code after : and paste it when on check out\n free $5 off if your final balance in the receipt is $50 or more*\n\n\n* promo code only applicable to redeem as a non member' .format('---Advertisement---'))
+    print('\n'*10+'{:^85s}\n Promo code(non - member)*: $1 off\n\n Please copy the code after : and paste it when on check out\n free $5 off promo code if your final balance in the receipt is $50 or more*\n\n\n* promo code only applicable to redeem as a non member' .format('---Advertisement---'))
     time.sleep(5)
 
 
