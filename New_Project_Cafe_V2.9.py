@@ -122,6 +122,7 @@ def category_menu():
                 break
             else:
                 outcome_table2()
+        cont()
     elif option == '2':
         header()
         for i in table2:
@@ -131,6 +132,7 @@ def category_menu():
                 continue
             else:
                 outcome_table2()
+        cont()
     elif option == '3':
         header()
         for i in table2:
@@ -138,6 +140,7 @@ def category_menu():
                 outcome_table2()
             else:
                 continue
+        cont()
     elif option == '4':
         add_item()
     elif option == '5':
@@ -152,7 +155,6 @@ def category_menu():
         checkout()
     else:
         category_menu()
-    cont()
     category_menu()
 
 
@@ -429,6 +431,8 @@ def card_selection():
         webbrowser.open_new('https://www.americanexpress.com/us/help/make-a-payment.html')
     elif card_select == '5':
         webbrowser.open_new('https://www.unionpayintl.com/en/servicesProducts/products/innovativeProducts/onlinePayment/')
+    else:
+        card_selection()
 
 
 def rg():
