@@ -61,7 +61,7 @@ def main():
 def cafe_menu():
     cafe_menu_default()
     cont()
-    print('\n'*10+formatting.header+'Select a number for the action that you would like to do:'+formatting.end+'\n 1. Sort\n 2. Add to cart\n 3. Remove from cart\n 4. Checkout\n 9. Main Menu')
+    print('\n'*10+formatting.header+'Select a number for the action that you would like to do:'+formatting.end+'\n 1. Sort\n 2. Add to cart\n 3. Remove from cart\n 4. View cart\n 5. Checkout\n 9. Main Menu')
     confirm = input(formatting.italic+'\n> Make your selection: '+formatting.end+formatting.end)
     if confirm == '1':
         print('\n'*10+formatting.header+'Sort by?'+formatting.end)
@@ -83,9 +83,12 @@ def cafe_menu():
     elif confirm == '3':
         remove_item()
     elif confirm == '4':
+        view_item()
+    elif confirm == '5':
         checkout()
     else:
         main()
+    cafe_menu()
 
 
 def cafe_menu_default():
@@ -108,7 +111,7 @@ def alphabetically_menu():
 
 
 def category_menu():
-    print('\n'*10+formatting.header+'Which category did you want?'+formatting.end+'\n 1. Coffee\n 2. Tea\n 3. Dessert\n 4. Add to cart\n 5. Remove from cart\n 8. Cafe Menu\n 9. Main Menu')
+    print('\n'*10+formatting.header+'Which category did you want?'+formatting.end+'\n 1. Coffee\n 2. Tea\n 3. Dessert\n 4. Add to cart\n 5. Remove from cart\n 6. View Cart\n 7. Checkout\n 8. Cafe Menu\n 9. Main Menu')
     option = input(formatting.italic+'\n> Make your selection: '+formatting.end)
     print('\n'*10+formatting.bold+'{:^85s}' .format('---Cafe Menu---')+formatting.end)
     if option == '1':
@@ -143,6 +146,10 @@ def category_menu():
         cafe_menu()
     elif option == '9':
         main()
+    elif option == '6':
+        view_item()
+    elif option == '7':
+        checkout()
     else:
         category_menu()
     cont()
@@ -172,11 +179,12 @@ def outcome_table2():
 
 
 def option_menu1():
-    print('\n'*10+formatting.header+'Select a number for the action that you would like to do:'+formatting.end+'\n 1. Add to cart\n 2. Remove from cart\n 3. Checkout\n 8. Cafe Menu\n 9. Main Menu')
+    print('\n'*10+formatting.header+'Select a number for the action that you would like to do:'+formatting.end+'\n 1. Add to cart\n 2. Remove from cart\n 3. View cart\n 4. Checkout\n 8. Cafe Menu\n 9. Main Menu')
     selector = {
         '1': add_item,
         '2': remove_item,
-        '3': checkout,
+        '3': view_item,
+        '4': checkout,
         '8': cafe_menu,
         '9': main
     }
