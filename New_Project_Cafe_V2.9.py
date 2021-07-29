@@ -244,15 +244,15 @@ def remove_item():
                     remove = shopping_list.get(item_remove)
                     remove -= remove_quantity
                     shopping_list[item_remove] = remove
-            continue_adding = input(formatting.italic+'\n> Remove more items? '+formatting.end)
-            if continue_adding == 'Yes' or continue_adding == 'yes' or continue_adding == 'Y' or continue_adding == 'y':
-                continue
-            else:
-                break
         except ValueError:
             print('Invalid Quantity')
             time.sleep(2)
             remove_item()
+        continue_adding = input(formatting.italic+'\n> Remove more items? '+formatting.end)
+        if continue_adding == 'Yes' or continue_adding == 'yes' or continue_adding == 'Y' or continue_adding == 'y':
+            continue
+        else:
+            break
 
 
 def view_item():
